@@ -289,13 +289,12 @@ main { max-width:1480px; margin:0 auto; padding:52px 56px; }
 .section-label em { font-style:italic; color:var(--gold); }
 
 /* ── ORG CHART PAGE ────────────────────────────────────────────────── */
-
-/* Hierarchy tree rendered vertically with clickable cards */
 .org-container {
   display:flex;
   flex-direction:column;
   align-items:center;
-  padding:48px 0;
+  padding:40px 24px;
+  width:100%;
 }
 
 /* ── HEAD NODE ─────────────────────────────────────────────────────── */
@@ -303,10 +302,10 @@ main { max-width:1480px; margin:0 auto; padding:52px 56px; }
   background:var(--navy);
   border:1px solid rgba(184,151,90,0.4);
   border-radius:var(--radius);
-  padding:20px 48px;
+  padding:18px 52px;
   text-align:center;
   box-shadow:var(--shadow-md);
-  min-width:220px;
+  min-width:200px;
   cursor:pointer;
   transition:box-shadow .2s;
 }
@@ -314,17 +313,17 @@ main { max-width:1480px; margin:0 auto; padding:52px 56px; }
 .head-card:hover { box-shadow:var(--shadow-lg); }
 
 .head-card .eyebrow {
-  font-size:0.62rem;
+  font-size:0.6rem;
   font-weight:600;
   letter-spacing:0.18em;
   text-transform:uppercase;
   color:var(--gold-lt);
-  margin-bottom:6px;
+  margin-bottom:5px;
 }
 
 .head-card .title {
   font-family:'Playfair Display',serif;
-  font-size:1.1rem;
+  font-size:1.05rem;
   font-weight:500;
   color:var(--white);
 }
@@ -332,33 +331,27 @@ main { max-width:1480px; margin:0 auto; padding:52px 56px; }
 /* ── CONNECTOR ─────────────────────────────────────────────────────── */
 .v-connector {
   width:1px;
-  height:40px;
+  height:36px;
   background:linear-gradient(to bottom,var(--gold),rgba(184,151,90,.2));
 }
 
-.h-connector {
-  height:1px;
-  background:rgba(184,151,90,.35);
-  position:absolute;
-  top:0;
-  left:60px;right:60px;
-}
-
-/* ── FUNCTION ROW ──────────────────────────────────────────────────── */
+/* ── FUNCTION ROW — responsive wrapping grid ───────────────────────── */
 .fn-row {
-  display:flex;
-  gap:16px;
-  justify-content:center;
-  align-items:flex-start;
+  display:grid;
+  grid-template-columns:repeat(5, 1fr);
+  gap:14px;
+  width:100%;
+  max-width:900px;
   position:relative;
-  padding-top:40px;
+  padding-top:36px;
 }
 
 .fn-row::before {
   content:'';
   position:absolute;
   top:0;
-  left:50px;right:50px;
+  left:10%;
+  right:10%;
   height:1px;
   background:rgba(184,151,90,.3);
 }
@@ -368,14 +361,13 @@ main { max-width:1480px; margin:0 auto; padding:52px 56px; }
   display:flex;
   flex-direction:column;
   align-items:center;
-  position:relative;
 }
 
 .fn-col::before {
   content:'';
   display:block;
   width:1px;
-  height:40px;
+  height:36px;
   background:rgba(184,151,90,.3);
 }
 
@@ -385,8 +377,8 @@ main { max-width:1480px; margin:0 auto; padding:52px 56px; }
   border:1px solid var(--border);
   border-top:3px solid var(--gold);
   border-radius:var(--radius);
-  width:155px;
-  padding:18px 14px 14px;
+  width:100%;
+  padding:16px 12px 14px;
   cursor:pointer;
   transition:all .22s ease;
   box-shadow:var(--shadow-sm);
@@ -847,8 +839,11 @@ main { max-width:1480px; margin:0 auto; padding:52px 56px; }
   .site-header,.site-nav { padding-left:24px; padding-right:24px; }
   main { padding:32px 24px; }
   .metrics-grid { grid-template-columns:repeat(2,1fr); }
-  .fn-row { flex-wrap:wrap; }
+  .fn-row { grid-template-columns:repeat(3,1fr) !important; max-width:100% !important; }
   .header-pills { display:none; }
+}
+@media(max-width:600px){
+  .fn-row { grid-template-columns:repeat(2,1fr) !important; }
 }
 </style>
 </head>
@@ -1022,7 +1017,7 @@ main { max-width:1480px; margin:0 auto; padding:52px 56px; }
     <p>Click any name card to view their full role, responsibilities, and reporting line.</p>
   </div>
 
-  <div style="background:var(--off-white);border:1px solid var(--border);border-radius:16px;padding:16px;overflow-x:auto;">
+  <div style="background:var(--off-white);border:1px solid var(--border);border-radius:16px;padding:32px 24px;">
     <div class="org-container">
 
       <!-- L1 HEAD HR -->
@@ -1033,10 +1028,9 @@ main { max-width:1480px; margin:0 auto; padding:52px 56px; }
 
       <div class="v-connector"></div>
 
-      <!-- L2 FUNCTION NODES -->
+      <!-- ROW 1 — first 5 functions -->
       <div class="fn-row">
 
-        <!-- HRBP -->
         <div class="fn-col">
           <div class="fn-card" onclick="openFn('hrbp')">
             <span class="fn-icon">🤝</span>
@@ -1048,7 +1042,6 @@ main { max-width:1480px; margin:0 auto; padding:52px 56px; }
           </div>
         </div>
 
-        <!-- TALENT ACQUISITION -->
         <div class="fn-col">
           <div class="fn-card accent-green" onclick="openFn('ta')">
             <span class="fn-icon">🎯</span>
@@ -1061,7 +1054,6 @@ main { max-width:1480px; margin:0 auto; padding:52px 56px; }
           </div>
         </div>
 
-        <!-- PAYROLL + HRIS -->
         <div class="fn-col">
           <div class="fn-card accent-navy" onclick="openFn('payroll')">
             <span class="fn-icon">💰</span>
@@ -1073,7 +1065,6 @@ main { max-width:1480px; margin:0 auto; padding:52px 56px; }
           </div>
         </div>
 
-        <!-- STRATEGY / PMS / OD -->
         <div class="fn-col">
           <div class="fn-card accent-warm" onclick="openFn('strategy')">
             <span class="fn-icon">🧭</span>
@@ -1084,7 +1075,6 @@ main { max-width:1480px; margin:0 auto; padding:52px 56px; }
           </div>
         </div>
 
-        <!-- L&D / ENGAGEMENT -->
         <div class="fn-col">
           <div class="fn-card accent-teal" onclick="openFn('ld')">
             <span class="fn-icon">📚</span>
@@ -1095,8 +1085,15 @@ main { max-width:1480px; margin:0 auto; padding:52px 56px; }
           </div>
         </div>
 
-        <!-- COMPLIANCE -->
-        <div class="fn-col">
+      </div><!-- row 1 -->
+
+      <!-- small gap between rows -->
+      <div style="height:20px;"></div>
+
+      <!-- ROW 2 — remaining 4 functions -->
+      <div class="fn-row" style="grid-template-columns:repeat(4,1fr);max-width:740px;padding-top:0;margin-top:0;">
+        <div class="fn-col" style="padding-top:0;">
+          <div style="height:0;"></div>
           <div class="fn-card accent-danger" onclick="openFn('compliance')">
             <span class="fn-icon">⚖️</span>
             <div class="fn-name">HO HR Compliance</div>
@@ -1106,8 +1103,8 @@ main { max-width:1480px; margin:0 auto; padding:52px 56px; }
           </div>
         </div>
 
-        <!-- HR ANALYTICS -->
-        <div class="fn-col">
+        <div class="fn-col" style="padding-top:0;">
+          <div style="height:0;"></div>
           <div class="fn-card" onclick="openFn('analytics')">
             <span class="fn-icon">📊</span>
             <div class="fn-name">HR Analytics &amp; HRIS</div>
@@ -1117,8 +1114,8 @@ main { max-width:1480px; margin:0 auto; padding:52px 56px; }
           </div>
         </div>
 
-        <!-- ADMIN -->
-        <div class="fn-col">
+        <div class="fn-col" style="padding-top:0;">
+          <div style="height:0;"></div>
           <div class="fn-card accent-slate" onclick="openFn('admin')">
             <span class="fn-icon">🏢</span>
             <div class="fn-name">Administration</div>
@@ -1132,8 +1129,8 @@ main { max-width:1480px; margin:0 auto; padding:52px 56px; }
           </div>
         </div>
 
-        <!-- IT -->
-        <div class="fn-col">
+        <div class="fn-col" style="padding-top:0;">
+          <div style="height:0;"></div>
           <div class="fn-card accent-slate" onclick="openFn('it')">
             <span class="fn-icon">💻</span>
             <div class="fn-name">IT Support</div>
@@ -1143,9 +1140,10 @@ main { max-width:1480px; margin:0 auto; padding:52px 56px; }
           </div>
         </div>
 
-      </div><!-- fn-row -->
+      </div><!-- row 2 -->
+
     </div><!-- org-container -->
-  </div><!-- scroll wrapper -->
+  </div>
 
   <p style="text-align:center;font-size:.75rem;color:var(--muted-lt);margin-top:14px;font-weight:300;">Click any name chip or function card for full details</p>
 </section>

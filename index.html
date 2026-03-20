@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conscient — People & Organisation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ─── CONSCIENT BRAND ───────────────────────────────────────────────
+   conscient.in uses:
+   • Pure white / warm off-white backgrounds
+   • Very dark charcoal #1C1C1C / #222 for body text
+   • Deep navy-charcoal #16213E for headers/accents
+   • Warm gold / amber #B8975A as primary accent
+   • Light warm grey #F7F5F0 for section backgrounds
+   • Clean Playfair Display serif + Jost sans-serif
+   ─────────────────────────────────────────────────────────────────── */
+:root {
+  --white:       #FFFFFF;
+  --off-white:   #F7F5F0;
+  --charcoal:    #1C1C1E;
+  --navy:        #16213E;
+  --gold:        #B8975A;
+  --gold-lt:     #D4B87A;
+  --gold-pale:   #F0E8D4;
+  --muted:       #787878;
+  --muted-lt:    #ADADAD;
+  --border:      #E8E4DC;
+  --border-dark: #C8C0B0;
+  --danger:      #9B3D2A;
+  --danger-bg:   #FDF0ED;
+  --warn:        #8B6914;
+  --warn-bg:     #FDF5E0;
+  --success:     #2E5943;
+  --success-bg:  #EBF4EF;
+  --shadow-sm:   0 2px 12px rgba(28,28,30,0.06);
+  --shadow-md:   0 6px 28px rgba(28,28,30,0.10);
+  --shadow-lg:   0 16px 48px rgba(28,28,30,0.14);
+  --radius:      12px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body {
+  font-family:'Jost',sans-serif;
+  background:var(--white);
+  color:var(--charcoal);
+  font-weight:400;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── HEADER ────────────────────────────────────────────────────────── */
+.site-header {
+  background:var(--navy);
+  padding:0 56px;
+  display:flex;
+  align-items:stretch;
+  justify-content:space-between;
+  border-bottom:2px solid var(--gold);
+  position:sticky;
+  top:0;
+  z-index:200;
+}
+
+.logo-area {
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:18px 0;
+}
+
+.logo-mark {
+  width:40px;height:40px;
+  background:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;font-weight:600;
+  color:var(--navy);
+  letter-spacing:-0.5px;
+  flex-shrink:0;
+}
+
+.logo-text {
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;
+  font-weight:500;
+  color:var(--white);
+  letter-spacing:0.06em;
+}
+
+.logo-text span {
+  display:block;
+  font-family:'Jost',sans-serif;
+  font-size:0.62rem;
+  font-weight:400;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--gold-lt);
+  margin-top:1px;
+}
+
+.header-pills {
+  display:flex;
+  align-items:center;
+  gap:24px;
+}
+
+.pill {
+  font-size:0.72rem;
+  font-weight:500;
+  letter-spacing:0.06em;
+  color:rgba(255,255,255,0.65);
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.pill b { color:var(--gold-lt); }
+
+.pill-dot {
+  width:5px;height:5px;
+  border-radius:50%;
+  background:var(--gold);
+  flex-shrink:0;
+}
+
+.pill-dot.red { background:#E07058; animation:blink 2s infinite; }
+
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ── NAV ───────────────────────────────────────────────────────────── */
+.site-nav {
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+  padding:0 56px;
+  display:flex;
+  gap:0;
+  position:sticky;
+  top:76px;
+  z-index:190;
+  box-shadow:var(--shadow-sm);
+}
+
+.nav-btn {
+  background:none;border:none;
+  font-family:'Jost',sans-serif;
+  font-size:0.78rem;
+  font-weight:500;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+  padding:16px 24px;
+  cursor:pointer;
+  border-bottom:2px solid transparent;
+  transition:all .2s;
+  white-space:nowrap;
+}
+
+.nav-btn:hover { color:var(--charcoal); }
+.nav-btn.active { color:var(--navy); border-bottom-color:var(--gold); font-weight:600; }
+
+/* ── MAIN ──────────────────────────────────────────────────────────── */
+main { max-width:1480px; margin:0 auto; padding:52px 56px; }
+
+.page { display:none; }
+.page.active { display:block; }
+
+/* ── PAGE HEADER ───────────────────────────────────────────────────── */
+.page-header {
+  margin-bottom:48px;
+}
+
+.page-header h1 {
+  font-family:'Playfair Display',serif;
+  font-size:2.6rem;
+  font-weight:400;
+  color:var(--navy);
+  line-height:1.15;
+  letter-spacing:-0.02em;
+}
+
+.page-header h1 em {
+  font-style:italic;
+  color:var(--gold);
+}
+
+.page-header p {
+  margin-top:10px;
+  font-size:0.88rem;
+  color:var(--muted);
+  font-weight:300;
+  max-width:540px;
+}
+
+.divider {
+  width:48px;height:2px;
+  background:var(--gold);
+  margin:16px 0;
+}
+
+/* ── ALERT ─────────────────────────────────────────────────────────── */
+.alert-box {
+  background:var(--danger-bg);
+  border:1px solid rgba(155,61,42,0.18);
+  border-left:3px solid var(--danger);
+  border-radius:var(--radius);
+  padding:20px 24px;
+  margin-bottom:40px;
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+}
+
+.alert-box .ai { font-size:1.3rem; flex-shrink:0; margin-top:1px; }
+.alert-box .at { font-weight:600; font-size:0.85rem; color:var(--danger); margin-bottom:4px; }
+.alert-box .ab { font-size:0.8rem; color:#5a2515; line-height:1.7; font-weight:300; }
+
+/* ── OVERVIEW METRICS ──────────────────────────────────────────────── */
+.metrics-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+  margin-bottom:48px;
+}
+
+.metric {
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:24px;
+  box-shadow:var(--shadow-sm);
+  transition:box-shadow .2s,transform .2s;
+  position:relative;
+  overflow:hidden;
+}
+
+.metric:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); }
+
+.metric::after {
+  content:'';
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:2px;
+}
+
+.metric.m-gold::after  { background:var(--gold); }
+.metric.m-navy::after  { background:var(--navy); }
+.metric.m-green::after { background:var(--success); }
+.metric.m-warn::after  { background:var(--warn); }
+
+.metric-label {
+  font-size:0.65rem;
+  font-weight:600;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:10px;
+}
+
+.metric-val {
+  font-family:'Playfair Display',serif;
+  font-size:3rem;
+  font-weight:400;
+  color:var(--navy);
+  line-height:1;
+}
+
+.metric.m-gold  .metric-val { color:var(--gold); }
+.metric.m-warn  .metric-val { color:var(--warn); }
+
+.metric-sub {
+  font-size:0.72rem;
+  color:var(--muted);
+  margin-top:8px;
+  font-weight:300;
+}
+
+/* ── SECTION LABEL ─────────────────────────────────────────────────── */
+.section-label {
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;
+  font-weight:400;
+  color:var(--navy);
+  margin-bottom:24px;
+}
+
+.section-label em { font-style:italic; color:var(--gold); }
+
+/* ── ORG CHART PAGE ────────────────────────────────────────────────── */
+
+/* Hierarchy tree rendered vertically with clickable cards */
+.org-container {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:48px 0;
+}
+
+/* ── HEAD NODE ─────────────────────────────────────────────────────── */
+.head-card {
+  background:var(--navy);
+  border:1px solid rgba(184,151,90,0.4);
+  border-radius:var(--radius);
+  padding:20px 48px;
+  text-align:center;
+  box-shadow:var(--shadow-md);
+  min-width:220px;
+  cursor:pointer;
+  transition:box-shadow .2s;
+}
+
+.head-card:hover { box-shadow:var(--shadow-lg); }
+
+.head-card .eyebrow {
+  font-size:0.62rem;
+  font-weight:600;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--gold-lt);
+  margin-bottom:6px;
+}
+
+.head-card .title {
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;
+  font-weight:500;
+  color:var(--white);
+}
+
+/* ── CONNECTOR ─────────────────────────────────────────────────────── */
+.v-connector {
+  width:1px;
+  height:40px;
+  background:linear-gradient(to bottom,var(--gold),rgba(184,151,90,.2));
+}
+
+.h-connector {
+  height:1px;
+  background:rgba(184,151,90,.35);
+  position:absolute;
+  top:0;
+  left:60px;right:60px;
+}
+
+/* ── FUNCTION ROW ──────────────────────────────────────────────────── */
+.fn-row {
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  align-items:flex-start;
+  position:relative;
+  padding-top:40px;
+}
+
+.fn-row::before {
+  content:'';
+  position:absolute;
+  top:0;
+  left:50px;right:50px;
+  height:1px;
+  background:rgba(184,151,90,.3);
+}
+
+/* ── FUNCTION COLUMN ───────────────────────────────────────────────── */
+.fn-col {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  position:relative;
+}
+
+.fn-col::before {
+  content:'';
+  display:block;
+  width:1px;
+  height:40px;
+  background:rgba(184,151,90,.3);
+}
+
+/* ── FUNCTION CARD ─────────────────────────────────────────────────── */
+.fn-card {
+  background:var(--white);
+  border:1px solid var(--border);
+  border-top:3px solid var(--gold);
+  border-radius:var(--radius);
+  width:155px;
+  padding:18px 14px 14px;
+  cursor:pointer;
+  transition:all .22s ease;
+  box-shadow:var(--shadow-sm);
+  text-align:center;
+}
+
+.fn-card:hover {
+  box-shadow:var(--shadow-lg);
+  border-color:var(--gold);
+  transform:translateY(-4px);
+}
+
+.fn-card.accent-navy   { border-top-color: var(--navy); }
+.fn-card.accent-green  { border-top-color: var(--success); }
+.fn-card.accent-danger { border-top-color: var(--danger); }
+.fn-card.accent-warm   { border-top-color: #9E6B30; }
+.fn-card.accent-teal   { border-top-color: #3A7D6A; }
+.fn-card.accent-slate  { border-top-color: #4A5568; }
+
+.fn-card .fn-icon {
+  font-size:1.6rem;
+  margin-bottom:8px;
+  display:block;
+}
+
+.fn-card .fn-name {
+  font-size:0.72rem;
+  font-weight:600;
+  color:var(--navy);
+  line-height:1.3;
+  margin-bottom:10px;
+  letter-spacing:0.01em;
+}
+
+/* People chips */
+.fn-people {
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.person-chip {
+  font-size:0.63rem;
+  font-weight:400;
+  padding:3px 7px;
+  border-radius:4px;
+  background:var(--off-white);
+  color:var(--charcoal);
+  border:1px solid var(--border);
+  text-align:left;
+  line-height:1.4;
+  cursor:pointer;
+  transition:all .18s;
+}
+
+.person-chip:hover {
+  background:var(--gold-pale);
+  border-color:var(--gold);
+  color:var(--navy);
+}
+
+/* ── CLICKABLE PERSON CARD (Detail Modal) ──────────────────────────── */
+.modal-overlay {
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(22,33,62,0.55);
+  z-index:500;
+  align-items:center;
+  justify-content:center;
+  backdrop-filter:blur(8px);
+  padding:24px;
+}
+
+.modal-overlay.open { display:flex; }
+
+.modal-card {
+  background:var(--white);
+  border-radius:16px;
+  max-width:560px;
+  width:100%;
+  max-height:88vh;
+  overflow-y:auto;
+  box-shadow:var(--shadow-lg);
+  animation:modal-in .28s ease;
+  position:relative;
+}
+
+@keyframes modal-in {
+  from { opacity:0; transform:translateY(24px) scale(.97); }
+  to   { opacity:1; transform:none; }
+}
+
+.modal-top {
+  background:var(--navy);
+  border-radius:16px 16px 0 0;
+  padding:28px 32px 24px;
+  position:relative;
+}
+
+.modal-close {
+  position:absolute;
+  top:16px;right:16px;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.2);
+  color:rgba(255,255,255,.7);
+  width:30px;height:30px;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:.85rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .18s;
+}
+
+.modal-close:hover { background:var(--gold); color:var(--navy); border-color:var(--gold); }
+
+.modal-eyebrow {
+  font-size:0.62rem;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--gold-lt);
+  margin-bottom:6px;
+}
+
+.modal-name {
+  font-family:'Playfair Display',serif;
+  font-size:1.7rem;
+  font-weight:500;
+  color:var(--white);
+  margin-bottom:2px;
+}
+
+.modal-role {
+  font-size:.82rem;
+  color:rgba(255,255,255,.65);
+  font-weight:300;
+}
+
+.modal-body {
+  padding:28px 32px 32px;
+}
+
+.modal-section-title {
+  font-size:.63rem;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:14px;
+  margin-top:22px;
+  padding-top:20px;
+  border-top:1px solid var(--border);
+}
+
+.modal-section-title:first-child { margin-top:0; padding-top:0; border-top:none; }
+
+/* Responsibilities list */
+.resp-list {
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.resp-list li {
+  display:flex;
+  gap:12px;
+  font-size:.82rem;
+  color:var(--charcoal);
+  line-height:1.65;
+  font-weight:300;
+}
+
+.resp-list li::before {
+  content:'—';
+  color:var(--gold);
+  flex-shrink:0;
+  font-weight:400;
+}
+
+/* Reports to badge */
+.reports-to {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--off-white);
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:8px 14px;
+  font-size:.78rem;
+  color:var(--navy);
+  font-weight:500;
+}
+
+.reports-to span { color:var(--muted); font-weight:300; margin-right:2px; }
+
+/* Level badge */
+.level-badge {
+  display:inline-block;
+  padding:3px 10px;
+  border-radius:4px;
+  font-size:.65rem;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  margin-bottom:14px;
+}
+
+.lv-l1 { background:rgba(184,151,90,.15); color:#7a5c00; border:1px solid rgba(184,151,90,.35); }
+.lv-l2 { background:rgba(22,33,62,.08); color:var(--navy); border:1px solid rgba(22,33,62,.18); }
+.lv-l3 { background:rgba(46,89,67,.08); color:var(--success); border:1px solid rgba(46,89,67,.2); }
+
+/* ── ROLES TABLE PAGE ──────────────────────────────────────────────── */
+.roles-table {
+  width:100%;
+  border-collapse:collapse;
+}
+
+.roles-table thead th {
+  text-align:left;
+  font-size:.65rem;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+  padding:10px 16px;
+  border-bottom:2px solid var(--border);
+}
+
+.roles-table tbody tr {
+  border-bottom:1px solid var(--border);
+  transition:background .15s;
+}
+
+.roles-table tbody tr:hover { background:var(--off-white); }
+
+.roles-table td {
+  padding:16px;
+  font-size:.82rem;
+  color:var(--charcoal);
+  vertical-align:top;
+  line-height:1.55;
+}
+
+.roles-table td strong { color:var(--navy); font-weight:600; }
+.roles-table td em { color:var(--muted); font-size:.76rem; font-style:normal; }
+
+/* ── CAPACITY PAGE ─────────────────────────────────────────────────── */
+.cap-grid {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:24px;
+  margin-top:8px;
+}
+
+.cap-card {
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:28px;
+  box-shadow:var(--shadow-sm);
+}
+
+.cap-card-title {
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;
+  font-weight:400;
+  color:var(--navy);
+  margin-bottom:24px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.wl-row {
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:18px;
+}
+
+.wl-name { width:80px; font-size:.78rem; font-weight:500; color:var(--navy); flex-shrink:0; }
+
+.wl-bar-bg {
+  flex:1;
+  height:6px;
+  background:var(--off-white);
+  border-radius:3px;
+  overflow:hidden;
+  border:1px solid var(--border);
+}
+
+.wl-bar { height:100%; border-radius:3px; }
+.wl-bar.safe   { background:var(--success); }
+.wl-bar.warn   { background:var(--warn); }
+.wl-bar.crit   { background:var(--danger); }
+
+.wl-pct { width:68px; font-size:.72rem; font-weight:600; text-align:right; flex-shrink:0; }
+.wl-pct.safe   { color:var(--success); }
+.wl-pct.warn   { color:var(--warn); }
+.wl-pct.crit   { color:var(--danger); }
+
+.wl-desc { font-size:.68rem; color:var(--muted); width:200px; flex-shrink:0; line-height:1.4; }
+
+.rec-list { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.rec-list li { display:flex; gap:10px; font-size:.8rem; color:var(--charcoal); line-height:1.6; font-weight:300; }
+.rec-list li::before { content:'→'; color:var(--gold); flex-shrink:0; font-weight:500; }
+
+/* ── SCROLLBAR ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width:5px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:var(--border-dark); border-radius:3px; }
+::-webkit-scrollbar-thumb:hover { background:var(--gold); }
+
+/* ── PASSWORD GATE ─────────────────────────────────────────────────── */
+#pw-gate {
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:var(--navy);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+
+.pw-box {
+  background:var(--white);
+  border-radius:16px;
+  padding:48px 44px 44px;
+  width:100%;
+  max-width:400px;
+  text-align:center;
+  box-shadow:0 32px 80px rgba(0,0,0,0.35);
+  animation:pw-in .3s ease;
+}
+
+@keyframes pw-in {
+  from { opacity:0; transform:translateY(24px) scale(.97); }
+  to   { opacity:1; transform:none; }
+}
+
+.pw-logo {
+  width:52px; height:52px;
+  background:var(--gold);
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;
+  font-weight:600;
+  color:var(--navy);
+  margin:0 auto 20px;
+}
+
+.pw-title {
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;
+  font-weight:500;
+  color:var(--navy);
+  margin-bottom:4px;
+}
+
+.pw-sub {
+  font-size:0.78rem;
+  color:var(--muted);
+  font-weight:300;
+  margin-bottom:32px;
+  letter-spacing:0.04em;
+}
+
+.pw-label {
+  display:block;
+  text-align:left;
+  font-size:0.65rem;
+  font-weight:600;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:8px;
+}
+
+.pw-input {
+  width:100%;
+  border:1.5px solid var(--border);
+  border-radius:8px;
+  padding:13px 16px;
+  font-family:'Jost',sans-serif;
+  font-size:0.95rem;
+  font-weight:400;
+  color:var(--charcoal);
+  background:var(--off-white);
+  outline:none;
+  transition:border-color .2s, box-shadow .2s;
+  letter-spacing:0.1em;
+  margin-bottom:12px;
+}
+
+.pw-input:focus {
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(184,151,90,0.15);
+  background:var(--white);
+}
+
+.pw-input.error {
+  border-color:var(--danger);
+  box-shadow:0 0 0 3px rgba(155,61,42,0.12);
+  animation:shake .35s ease;
+}
+
+@keyframes shake {
+  0%,100%{transform:translateX(0)}
+  20%{transform:translateX(-6px)}
+  40%{transform:translateX(6px)}
+  60%{transform:translateX(-4px)}
+  80%{transform:translateX(4px)}
+}
+
+.pw-error {
+  font-size:0.75rem;
+  color:var(--danger);
+  margin-bottom:16px;
+  min-height:18px;
+  font-weight:400;
+}
+
+.pw-btn {
+  width:100%;
+  background:var(--navy);
+  color:var(--white);
+  border:none;
+  border-radius:8px;
+  padding:14px;
+  font-family:'Jost',sans-serif;
+  font-size:0.85rem;
+  font-weight:600;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:background .2s, transform .15s;
+}
+
+.pw-btn:hover { background:#1e2d52; transform:translateY(-1px); }
+.pw-btn:active { transform:translateY(0); }
+
+.pw-footer {
+  margin-top:24px;
+  font-size:0.68rem;
+  color:var(--muted-lt);
+  font-weight:300;
+  letter-spacing:0.04em;
+}
+
+/* ── RESPONSIVE ────────────────────────────────────────────────────── */
+@media(max-width:1100px){
+  .site-header,.site-nav { padding-left:24px; padding-right:24px; }
+  main { padding:32px 24px; }
+  .metrics-grid { grid-template-columns:repeat(2,1fr); }
+  .fn-row { flex-wrap:wrap; }
+  .header-pills { display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── PASSWORD GATE ──────────────────────────────────────────────── -->
+<div id="pw-gate">
+  <div class="pw-box">
+    <div class="pw-logo">C</div>
+    <div class="pw-title">Conscient HR</div>
+    <div class="pw-sub">People &amp; Organisation · Restricted Access</div>
+    <label class="pw-label" for="pw-input">Enter Password</label>
+    <input
+      class="pw-input"
+      id="pw-input"
+      type="password"
+      placeholder="••••••••••"
+      autocomplete="current-password"
+      onkeydown="if(event.key==='Enter')checkPw()"
+    >
+    <div class="pw-error" id="pw-error"></div>
+    <button class="pw-btn" onclick="checkPw()">Access Dashboard</button>
+    <div class="pw-footer">Conscient Infrastructure · Internal Use Only</div>
+  </div>
+</div>
+
+<!-- ─── MODAL ──────────────────────────────────────────────────────── -->
+<div class="modal-overlay" id="overlay" onclick="closeIfBg(event)">
+  <div class="modal-card">
+    <div class="modal-top">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-eyebrow" id="m-ey"></div>
+      <div class="modal-name" id="m-name"></div>
+      <div class="modal-role" id="m-role"></div>
+    </div>
+    <div class="modal-body">
+      <div id="m-level"></div>
+      <div class="modal-section-title">Reports To</div>
+      <div id="m-reports"></div>
+      <div class="modal-section-title">Responsibilities</div>
+      <ul class="resp-list" id="m-resp"></ul>
+    </div>
+  </div>
+</div>
+
+<!-- ─── HEADER ─────────────────────────────────────────────────────── -->
+<header class="site-header">
+  <div class="logo-area">
+    <div class="logo-mark">C</div>
+    <div class="logo-text">
+      Conscient
+      <span>People &amp; Organisation</span>
+    </div>
+  </div>
+  <div class="header-pills">
+    <div class="pill"><div class="pill-dot"></div>13 Active Roles</div>
+    <div class="pill"><div class="pill-dot"></div>9 Functions &amp; CoEs</div>
+  </div>
+</header>
+
+<!-- ─── NAV ────────────────────────────────────────────────────────── -->
+<nav class="site-nav">
+  <button class="nav-btn active" onclick="showPage('overview',this)">Overview</button>
+  <button class="nav-btn" onclick="showPage('orgchart',this)">Org Chart</button>
+  <button class="nav-btn" onclick="showPage('roles',this)">Role Definitions</button>
+  <button class="nav-btn" onclick="showPage('capacity',this)">Team Workload</button>
+</nav>
+
+<main>
+
+<!-- ══════════════════════════ OVERVIEW ══════════════════════════════ -->
+<section class="page active" id="overview">
+  <div class="page-header">
+    <h1>HR Department<br><em>At a Glance</em></h1>
+    <div class="divider"></div>
+    <p>Structure and headcount overview for the People team at Conscient Infrastructure.</p>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric m-gold">
+      <div class="metric-label">Total Headcount</div>
+      <div class="metric-val">13</div>
+      <div class="metric-sub">Active HR professionals</div>
+    </div>
+    <div class="metric m-navy">
+      <div class="metric-label">Functions &amp; CoEs</div>
+      <div class="metric-val">9</div>
+      <div class="metric-sub">Centers of Excellence</div>
+    </div>
+    <div class="metric m-green">
+      <div class="metric-label">Reporting Levels</div>
+      <div class="metric-val">3</div>
+      <div class="metric-sub">L1 Leadership · L2 Leads · L3 Specialists</div>
+    </div>
+    <div class="metric m-warn">
+      <div class="metric-label">Office Locations</div>
+      <div class="metric-val">3</div>
+      <div class="metric-sub">Chattarpur · GVT · Head Office</div>
+    </div>
+  </div>
+
+  <div class="section-label">The HR <em>Structure</em></div>
+
+  <!-- Function summary cards -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:48px;">
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow-sm);">
+      <div style="font-size:1.4rem;margin-bottom:10px;">🤝</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--navy);margin-bottom:12px;">HRBP Function</div>
+      <ul class="resp-list">
+        <li>Saurav — Projects &amp; Retention HRBP (also leads TA)</li>
+        <li>Ayushi — HRBP for Sales, Marketing &amp; CRM verticals</li>
+      </ul>
+    </div>
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow-sm);">
+      <div style="font-size:1.4rem;margin-bottom:10px;">🎯</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--navy);margin-bottom:12px;">Talent Acquisition &amp; Onboarding</div>
+      <ul class="resp-list">
+        <li>Saurav — Lead TA, strategy &amp; full pipeline</li>
+        <li>Bhavna — Below-GM hiring, Zing onboarding, data management</li>
+        <li>Aruna — GM+ hiring, pre &amp; post onboarding, BGV</li>
+      </ul>
+    </div>
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow-sm);">
+      <div style="font-size:1.4rem;margin-bottom:10px;">💰</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--navy);margin-bottom:12px;">Payroll, HRIS &amp; Compliance</div>
+      <ul class="resp-list">
+        <li>Maya — Payroll lead, HRIS administration, HO HR compliance</li>
+        <li>Shweta — Maintenance company payroll processing</li>
+      </ul>
+    </div>
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow-sm);">
+      <div style="font-size:1.4rem;margin-bottom:10px;">📈</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--navy);margin-bottom:12px;">Strategy, PMS &amp; OD</div>
+      <ul class="resp-list">
+        <li>Ayushi — HR Strategy, Organisation Design</li>
+        <li>Ayushi — PMS end-to-end lead, Comp Benchmarking</li>
+      </ul>
+    </div>
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow-sm);">
+      <div style="font-size:1.4rem;margin-bottom:10px;">📚</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--navy);margin-bottom:12px;">L&amp;D, Engagement &amp; POSH</div>
+      <ul class="resp-list">
+        <li>Shweta — L&amp;D calendar, all trainings, POSH management</li>
+        <li>Shweta — Employee engagement initiatives</li>
+      </ul>
+    </div>
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow-sm);">
+      <div style="font-size:1.4rem;margin-bottom:10px;">🏢</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--navy);margin-bottom:12px;">Admin &amp; Front Office</div>
+      <ul class="resp-list">
+        <li>Thomas — Administration Head</li>
+        <li>Twinkle — Front Office, Chattarpur | Tamanna — Front Office, GVT | Barnali — Front Office, HO</li>
+        <li>Billu — Admin Support</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════ ORG CHART ═════════════════════════════ -->
+<section class="page" id="orgchart">
+  <div class="page-header">
+    <h1>Org <em>Chart</em></h1>
+    <div class="divider"></div>
+    <p>Click any name card to view their full role, responsibilities, and reporting line.</p>
+  </div>
+
+  <div style="background:var(--off-white);border:1px solid var(--border);border-radius:16px;padding:16px;overflow-x:auto;">
+    <div class="org-container">
+
+      <!-- L1 HEAD HR -->
+      <div class="head-card" onclick="openPerson('head')">
+        <div class="eyebrow">Level 1 · Leadership</div>
+        <div class="title">Head HR</div>
+      </div>
+
+      <div class="v-connector"></div>
+
+      <!-- L2 FUNCTION NODES -->
+      <div class="fn-row">
+
+        <!-- HRBP -->
+        <div class="fn-col">
+          <div class="fn-card" onclick="openFn('hrbp')">
+            <span class="fn-icon">🤝</span>
+            <div class="fn-name">HRBP</div>
+            <div class="fn-people">
+              <div class="person-chip" onclick="ev(event,'saurav')">Saurav</div>
+              <div class="person-chip" onclick="ev(event,'ayushi')">Ayushi</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TALENT ACQUISITION -->
+        <div class="fn-col">
+          <div class="fn-card accent-green" onclick="openFn('ta')">
+            <span class="fn-icon">🎯</span>
+            <div class="fn-name">Talent Acquisition</div>
+            <div class="fn-people">
+              <div class="person-chip" onclick="ev(event,'saurav')">Saurav (Lead)</div>
+              <div class="person-chip" onclick="ev(event,'bhavna')">Bhavna</div>
+              <div class="person-chip" onclick="ev(event,'aruna')">Aruna</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAYROLL + HRIS -->
+        <div class="fn-col">
+          <div class="fn-card accent-navy" onclick="openFn('payroll')">
+            <span class="fn-icon">💰</span>
+            <div class="fn-name">Payroll &amp; HRIS</div>
+            <div class="fn-people">
+              <div class="person-chip" onclick="ev(event,'maya')">Maya (Lead)</div>
+              <div class="person-chip" onclick="ev(event,'shweta')">Shweta</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STRATEGY / PMS / OD -->
+        <div class="fn-col">
+          <div class="fn-card accent-warm" onclick="openFn('strategy')">
+            <span class="fn-icon">🧭</span>
+            <div class="fn-name">Strategy, PMS &amp; OD</div>
+            <div class="fn-people">
+              <div class="person-chip" onclick="ev(event,'ayushi')">Ayushi (Lead)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- L&D / ENGAGEMENT -->
+        <div class="fn-col">
+          <div class="fn-card accent-teal" onclick="openFn('ld')">
+            <span class="fn-icon">📚</span>
+            <div class="fn-name">L&amp;D, Engagement &amp; POSH</div>
+            <div class="fn-people">
+              <div class="person-chip" onclick="ev(event,'shweta')">Shweta (Lead)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- COMPLIANCE -->
+        <div class="fn-col">
+          <div class="fn-card accent-danger" onclick="openFn('compliance')">
+            <span class="fn-icon">⚖️</span>
+            <div class="fn-name">HO HR Compliance</div>
+            <div class="fn-people">
+              <div class="person-chip" onclick="ev(event,'maya')">Maya (Lead)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HR ANALYTICS -->
+        <div class="fn-col">
+          <div class="fn-card" onclick="openFn('analytics')">
+            <span class="fn-icon">📊</span>
+            <div class="fn-name">HR Analytics &amp; HRIS</div>
+            <div class="fn-people">
+              <div class="person-chip" onclick="ev(event,'maya')">Maya (Lead)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ADMIN -->
+        <div class="fn-col">
+          <div class="fn-card accent-slate" onclick="openFn('admin')">
+            <span class="fn-icon">🏢</span>
+            <div class="fn-name">Administration</div>
+            <div class="fn-people">
+              <div class="person-chip" onclick="ev(event,'thomas')">Thomas (Head)</div>
+              <div class="person-chip" onclick="ev(event,'twinkle')">Twinkle</div>
+              <div class="person-chip" onclick="ev(event,'tamanna')">Tamanna</div>
+              <div class="person-chip" onclick="ev(event,'barnali')">Barnali</div>
+              <div class="person-chip" onclick="ev(event,'billu')">Billu</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- IT -->
+        <div class="fn-col">
+          <div class="fn-card accent-slate" onclick="openFn('it')">
+            <span class="fn-icon">💻</span>
+            <div class="fn-name">IT Support</div>
+            <div class="fn-people">
+              <div class="person-chip" onclick="ev(event,'sonu')">Sonu</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- fn-row -->
+    </div><!-- org-container -->
+  </div><!-- scroll wrapper -->
+
+  <p style="text-align:center;font-size:.75rem;color:var(--muted-lt);margin-top:14px;font-weight:300;">Click any name chip or function card for full details</p>
+</section>
+
+<!-- ══════════════════════════ ROLES ══════════════════════════════════ -->
+<section class="page" id="roles">
+  <div class="page-header">
+    <h1>Role <em>Definitions</em></h1>
+    <div class="divider"></div>
+    <p>Clear ownership, levels, reporting lines, and accountabilities for every position in the HR structure.</p>
+  </div>
+
+  <table class="roles-table">
+    <thead>
+      <tr>
+        <th>Level</th>
+        <th>Name</th>
+        <th>Function / Role Title</th>
+        <th>Reports To</th>
+        <th>Key Responsibilities</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="level-badge lv-l1">L1</span></td>
+        <td><strong>Head HR</strong></td>
+        <td>HR Leadership</td>
+        <td>CEO / MD</td>
+        <td>HR strategy, policy, culture, compliance oversight, workforce planning, budget ownership</td>
+      </tr>
+      <tr>
+        <td><span class="level-badge lv-l2">L2</span></td>
+        <td><strong>Saurav</strong></td>
+        <td>Lead TA · HRBP — Projects &amp; Retention</td>
+        <td>Head HR</td>
+        <td>TA team leadership (Bhavna &amp; Aruna); GM+ and senior hiring; TA strategy, sourcing &amp; pipeline; HRBP for Projects &amp; Retention division; employee relations &amp; retention</td>
+      </tr>
+      <tr>
+        <td><span class="level-badge lv-l2">L2</span></td>
+        <td><strong>Ayushi</strong></td>
+        <td>HR Strategy · HRBP (Sales, Marketing &amp; CRM) · PMS Lead · OD · Comp Benchmarking</td>
+        <td>Head HR</td>
+        <td>HR strategy execution; HRBP for Sales, Marketing &amp; CRM; PMS end-to-end ownership; Organisation Design; Compensation Benchmarking</td>
+      </tr>
+      <tr>
+        <td><span class="level-badge lv-l2">L2</span></td>
+        <td><strong>Maya</strong></td>
+        <td>Payroll Lead · HRIS · HO HR Compliance</td>
+        <td>Head HR</td>
+        <td>Payroll lead (all entities), HRIS administration and data integrity, HR Compliance for Head Office, HR analytics &amp; MIS reporting</td>
+      </tr>
+      <tr>
+        <td><span class="level-badge lv-l2">L2</span></td>
+        <td><strong>Shweta</strong></td>
+        <td>Payroll (Maintenance Co.) · L&amp;D · POSH · Employee Benefits · Employee Engagement</td>
+        <td>Head HR</td>
+        <td>Maintenance company payroll; L&amp;D calendar &amp; all training delivery; POSH compliance &amp; ICC management; Employee benefits &amp; medical; Employee engagement programmes; Confirmation process</td>
+      </tr>
+      <tr>
+        <td><span class="level-badge lv-l3">L3</span></td>
+        <td><strong>Bhavna</strong></td>
+        <td>TA — Below GM Hiring &amp; Onboarding</td>
+        <td>Saurav</td>
+        <td>Below-GM hiring; Zing platform onboarding; ATS &amp; recruitment data management</td>
+      </tr>
+      <tr>
+        <td><span class="level-badge lv-l3">L3</span></td>
+        <td><strong>Aruna</strong></td>
+        <td>TA — GM+ Hiring · Pre &amp; Post Onboarding · BGV</td>
+        <td>Saurav</td>
+        <td>GM and above hiring; pre &amp; post onboarding management; Background Verification coordination</td>
+      </tr>
+      <tr>
+        <td><span class="level-badge lv-l2">L2</span></td>
+        <td><strong>Thomas</strong></td>
+        <td>Administration Head</td>
+        <td>Head HR</td>
+        <td>Administration function leadership; facilities &amp; office management; Front Office team management (Chattarpur, GVT, HO sites)</td>
+      </tr>
+      <tr>
+        <td><span class="level-badge lv-l3">L3</span></td>
+        <td><strong>Twinkle</strong></td>
+        <td>Front Office Executive — Chattarpur</td>
+        <td>Thomas</td>
+        <td>Front office operations at Chattarpur office</td>
+      </tr>
+      <tr>
+        <td><span class="level-badge lv-l3">L3</span></td>
+        <td><strong>Tamanna</strong></td>
+        <td>Front Office Executive — GVT Office</td>
+        <td>Thomas</td>
+        <td>Front office operations at GVT (Government) office</td>
+      </tr>
+      <tr>
+        <td><span class="level-badge lv-l3">L3</span></td>
+        <td><strong>Barnali</strong></td>
+        <td>Front Office Executive — Head Office</td>
+        <td>Thomas</td>
+        <td>Front office operations at Head Office</td>
+      </tr>
+      <tr>
+        <td><span class="level-badge lv-l3">L3</span></td>
+        <td><strong>Billu</strong></td>
+        <td>Admin Support</td>
+        <td>Thomas</td>
+        <td>General administration support across facilities</td>
+      </tr>
+      <tr>
+        <td><span class="level-badge lv-l2">L2</span></td>
+        <td><strong>Sonu</strong></td>
+        <td>IT Support</td>
+        <td>Head HR</td>
+        <td>IT infrastructure support, systems admin, hardware/software provisioning for new joiners</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ══════════════════════════ CAPACITY ══════════════════════════════ -->
+<section class="page" id="capacity">
+  <div class="page-header">
+    <h1>Team <em>Workload</em></h1>
+    <div class="divider"></div>
+    <p>Portfolio distribution across the HR team at Conscient Infrastructure.</p>
+  </div>
+
+  <div class="cap-grid">
+
+    <div class="cap-card" style="grid-column:1/-1;">
+      <div class="cap-card-title">Portfolio Distribution by Team Member</div>
+
+      <div class="wl-row">
+        <div class="wl-name">Ayushi</div>
+        <div class="wl-bar-bg"><div class="wl-bar crit" style="width:92%"></div></div>
+        <div class="wl-pct crit">High</div>
+        <div class="wl-desc">HR Strategy, HRBP (S&amp;M &amp; CRM), PMS end-to-end, OD, Comp Benchmarking</div>
+      </div>
+      <div class="wl-row">
+        <div class="wl-name">Shweta</div>
+        <div class="wl-bar-bg"><div class="wl-bar crit" style="width:88%"></div></div>
+        <div class="wl-pct crit">High</div>
+        <div class="wl-desc">Payroll (Maint. Co.), L&amp;D, POSH, Employee Benefits, Employee Engagement, Confirmation</div>
+      </div>
+      <div class="wl-row">
+        <div class="wl-name">Maya</div>
+        <div class="wl-bar-bg"><div class="wl-bar warn" style="width:80%"></div></div>
+        <div class="wl-pct warn">High</div>
+        <div class="wl-desc">Payroll Lead (all entities), HRIS, HO HR Compliance, HR Analytics &amp; MIS</div>
+      </div>
+      <div class="wl-row">
+        <div class="wl-name">Thomas</div>
+        <div class="wl-bar-bg"><div class="wl-bar warn" style="width:62%"></div></div>
+        <div class="wl-pct warn">Medium</div>
+        <div class="wl-desc">Administration head, facilities, 3-site FOE team management</div>
+      </div>
+      <div class="wl-row">
+        <div class="wl-name">FOE Team</div>
+        <div class="wl-bar-bg"><div class="wl-bar safe" style="width:50%"></div></div>
+        <div class="wl-pct safe">Moderate</div>
+        <div class="wl-desc">Twinkle (Chattarpur), Tamanna (GVT), Barnali (HO) — front office ops</div>
+      </div>
+      <div class="wl-row">
+        <div class="wl-name">Aruna</div>
+        <div class="wl-bar-bg"><div class="wl-bar safe" style="width:52%"></div></div>
+        <div class="wl-pct safe">Moderate</div>
+        <div class="wl-desc">GM+ hiring, pre &amp; post onboarding, BGV</div>
+      </div>
+      <div class="wl-row">
+        <div class="wl-name">Bhavna</div>
+        <div class="wl-bar-bg"><div class="wl-bar safe" style="width:50%"></div></div>
+        <div class="wl-pct safe">Moderate</div>
+        <div class="wl-desc">Below-GM hiring, Zing onboarding, ATS data management</div>
+      </div>
+      <div class="wl-row">
+        <div class="wl-name">Saurav</div>
+        <div class="wl-bar-bg"><div class="wl-bar safe" style="width:40%"></div></div>
+        <div class="wl-pct safe">Lean</div>
+        <div class="wl-desc">TA Lead (team of 2: Bhavna &amp; Aruna), HRBP Projects &amp; Retention</div>
+      </div>
+      <div class="wl-row">
+        <div class="wl-name">Sonu</div>
+        <div class="wl-bar-bg"><div class="wl-bar safe" style="width:38%"></div></div>
+        <div class="wl-pct safe">Lean</div>
+        <div class="wl-desc">IT support operations</div>
+      </div>
+      <div class="wl-row">
+        <div class="wl-name">Billu</div>
+        <div class="wl-bar-bg"><div class="wl-bar safe" style="width:35%"></div></div>
+        <div class="wl-pct safe">Lean</div>
+        <div class="wl-desc">Admin support across facilities</div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ─── PERSON DATA ─────────────────────────────────────────────────── -->
+<script>
+const PEOPLE = {
+  head: {
+    ey:'Level 1 · HR Leadership',
+    name:'Head HR',
+    role:'Chief People Officer / HR Head',
+    level:'l1',
+    reports:'CEO / Managing Director',
+    resp:[
+      'Set and execute HR strategy aligned to Conscient\'s business growth roadmap',
+      'Own HR policy framework, governance, and compliance at the organisational level',
+      'Culture stewardship, employee value proposition, and employer branding',
+      'HR budget ownership, headcount planning, and organisational design',
+      'Stakeholder management with CXO leadership and Board',
+      'Oversight of all CoE functions: TA, Payroll, L&D, Compliance, Admin, IT',
+    ]
+  },
+  saurav: {
+    ey:'Level 2 · Talent Acquisition & HRBP',
+    name:'Saurav',
+    role:'Lead TA · HRBP — Projects & Retention',
+    level:'l2',
+    reports:'Head HR',
+    resp:[
+      'Lead Talent Acquisition — full-cycle recruitment strategy and execution',
+      'Manage the TA team: Bhavna (below-GM hiring) and Aruna (GM+ hiring / BGV)',
+      'Personally oversee senior and strategic hiring (GM and above)',
+      'Pipeline management, sourcing strategy, and vendor coordination',
+      'HRBP for Projects & Retention division — business partnering, grievances, retention initiatives',
+    ]
+  },
+  ayushi: {
+    ey:'Level 2 · Strategy, PMS & HRBP',
+    name:'Ayushi',
+    role:'HR Strategy · HRBP (Sales, Marketing & CRM) · PMS Lead · OD · Comp Benchmarking',
+    level:'l2',
+    reports:'Head HR',
+    resp:[
+      'HR Strategy — design and execution of annual HR plan and priorities',
+      'HRBP for Sales, Marketing and CRM verticals — business partnering and people support',
+      'PMS — Performance Management System owner, end-to-end cycle management (goal setting, mid-year, annual review, calibration)',
+      'Organisation Design (OD) — structural reviews, role design, grading frameworks',
+      'Compensation Benchmarking — annual market benchmarking, salary bands, increment recommendations',
+    ]
+  },
+  maya: {
+    ey:'Level 2 · Payroll, HRIS & Compliance',
+    name:'Maya',
+    role:'Payroll Lead · HRIS Administration · HO HR Compliance',
+    level:'l2',
+    reports:'Head HR',
+    resp:[
+      'Payroll Lead — end-to-end payroll processing for all entities, statutory compliance (PF, ESIC, PT)',
+      'HRIS administration — system ownership, data integrity, access management, HRIS reporting',
+      'HO HR Compliance — labour law adherence, statutory returns, audit support for Head Office',
+      'HR Analytics — monthly MIS, headcount dashboards, attrition analysis, leadership reports',
+      'Compensation support — HRIS-based comp data management and benchmarking data inputs',
+    ]
+  },
+  shweta: {
+    ey:'Level 2 · Operations & Employee Wellbeing',
+    name:'Shweta',
+    role:'Payroll (Maint. Co.) · L&D · POSH · Employee Benefits · Employee Engagement',
+    level:'l2',
+    reports:'Head HR',
+    resp:[
+      'Payroll processing for the Maintenance company entity',
+      'L&D — annual training calendar design, vendor management, and delivery of all training programmes',
+      'POSH — Internal Complaints Committee (ICC) management, mandatory POSH training for all employees',
+      'Employee Benefits — group medical insurance, life insurance, leave policy administration',
+      'Employee Engagement — R&R programmes, milestone celebrations, culture initiatives',
+      'Confirmation process management for probationary employees',
+    ]
+  },
+  bhavna: {
+    ey:'Level 3 · Talent Acquisition',
+    name:'Bhavna',
+    role:'TA — Below GM Hiring & Zing Onboarding',
+    level:'l3',
+    reports:'Saurav (Lead TA)',
+    resp:[
+      'Full-cycle hiring for all roles below General Manager level',
+      'Zing platform — onboarding management for new joiners below GM',
+      'ATS and recruitment data management — pipeline tracking, MIS, candidate database',
+      'Coordination with hiring managers for below-GM requisitions',
+      'Interview scheduling, offer generation, and pre-joining documentation',
+    ]
+  },
+  aruna: {
+    ey:'Level 3 · Talent Acquisition',
+    name:'Aruna',
+    role:'TA — GM+ Hiring · Pre & Post Onboarding · BGV',
+    level:'l3',
+    reports:'Saurav (Lead TA)',
+    resp:[
+      'End-to-end hiring for General Manager and above positions',
+      'Pre-onboarding — offer acceptance to joining: documentation, system setup, welcome communication',
+      'Post-onboarding — first 30/60/90 day integration, induction programme coordination',
+      'Background Verification (BGV) — initiating, tracking, and closing BGV for all new joiners',
+      'Collaborate with Head HR and business leaders on senior role briefs',
+    ]
+  },
+  thomas: {
+    ey:'Level 2 · Administration',
+    name:'Thomas',
+    role:'Administration Head',
+    level:'l2',
+    reports:'Head HR',
+    resp:[
+      'Head of Administration function — policy, process, and team oversight',
+      'Facilities management across Conscient office locations',
+      'Direct management of Front Office team: Twinkle (Chattarpur), Tamanna (GVT), Barnali (HO)',
+      'Admin Support oversight (Billu)',
+      'Vendor coordination for admin services, housekeeping, and facilities',
+      'Office operations, asset management, and infrastructure support',
+    ]
+  },
+  twinkle: {
+    ey:'Level 3 · Front Office',
+    name:'Twinkle',
+    role:'Front Office Executive — Chattarpur Office',
+    level:'l3',
+    reports:'Thomas (Admin Head)',
+    resp:[
+      'Manage front office operations at the Chattarpur office location',
+      'Visitor management, reception, and front desk coordination',
+      'Call routing, courier management, and office communications',
+      'Coordinate with facilities and admin for day-to-day requirements',
+    ]
+  },
+  tamanna: {
+    ey:'Level 3 · Front Office',
+    name:'Tamanna',
+    role:'Front Office Executive — GVT Office',
+    level:'l3',
+    reports:'Thomas (Admin Head)',
+    resp:[
+      'Manage front office operations at the GVT (Government) office location',
+      'Visitor management, reception, and front desk coordination',
+      'Call routing, courier management, and office communications',
+      'Coordinate with facilities and admin for day-to-day requirements',
+    ]
+  },
+  barnali: {
+    ey:'Level 3 · Front Office',
+    name:'Barnali',
+    role:'Front Office Executive — Head Office',
+    level:'l3',
+    reports:'Thomas (Admin Head)',
+    resp:[
+      'Manage front office operations at Conscient Head Office',
+      'Visitor management, reception, and front desk coordination',
+      'Call routing, courier management, and office communications',
+      'Coordinate with facilities and admin for day-to-day requirements',
+    ]
+  },
+  billu: {
+    ey:'Level 3 · Administration',
+    name:'Billu',
+    role:'Admin Support',
+    level:'l3',
+    reports:'Thomas (Admin Head)',
+    resp:[
+      'General administration support across all office locations',
+      'Facilities and office supply management',
+      'Support Thomas with admin operations, documentation, and coordination',
+    ]
+  },
+  sonu: {
+    ey:'Level 2 · IT',
+    name:'Sonu',
+    role:'IT Support',
+    level:'l2',
+    reports:'Head HR',
+    resp:[
+      'IT infrastructure support and day-to-day troubleshooting',
+      'System administration for HR tools and business platforms',
+      'Hardware and software provisioning for new joiners',
+      'Coordination with external IT vendors and service providers',
+      'Network, connectivity, and security monitoring',
+    ]
+  },
+};
+
+const FN_DATA = {
+  hrbp: {
+    ey:'L2 Function',name:'HRBP',role:'HR Business Partnering across all Conscient verticals',
+    level:'l2',reports:'Head HR',
+    resp:['Saurav: HRBP for Projects & Retention division (also serves as Lead TA)','Ayushi: HRBP for Sales, Marketing & CRM verticals','Business partnering — act as first HR contact for business unit leaders','Employee relations, conflict resolution, and grievance management'],
+  },
+  ta: {
+    ey:'L2–L3 CoE',name:'Talent Acquisition',role:'End-to-end hiring, onboarding, and BGV for all of Conscient',
+    level:'l2',reports:'Head HR',
+    resp:['Saurav leads the function — TA strategy, pipeline management, team leadership','Bhavna: below-GM hiring, Zing onboarding, ATS/data management','Aruna: GM+ hiring, pre & post onboarding, Background Verification','End-to-end recruitment: job brief to offer acceptance across all levels'],
+  },
+  payroll: {
+    ey:'L2 CoE',name:'Payroll & HRIS',role:'Payroll processing, HRIS administration, and statutory compliance',
+    level:'l2',reports:'Head HR',
+    resp:['Maya: Payroll Lead for all entities, HRIS system ownership, HR analytics','Shweta: Payroll processing specifically for the Maintenance company entity','Statutory compliance: PF, ESIC, Professional Tax, Gratuity management','HRIS data integrity, access management, and system administration','Monthly salary processing, increment cycles, and variable pay'],
+  },
+  strategy: {
+    ey:'L2 CoE',name:'HR Strategy, PMS & OD',role:'Strategic HR, performance management, org design, and benchmarking',
+    level:'l2',reports:'Head HR',
+    resp:['Ayushi owns this function end-to-end','HR Strategy: annual HR plan, priorities, and roadmap aligned to business goals','PMS: full appraisal cycle ownership — goal-setting, mid-year, annual review, calibration, normalisation','OD (Organisation Design): structural reviews, role design, grading frameworks, job architecture','Comp Benchmarking: annual market study, salary band recommendations, increment guidelines'],
+  },
+  ld: {
+    ey:'L2 CoE',name:'L&D, Engagement & POSH',role:'Learning, employee wellbeing, engagement, and POSH compliance',
+    level:'l2',reports:'Head HR',
+    resp:['Shweta owns this function end-to-end','L&D: annual training calendar, vendor management, induction programmes, all training delivery','POSH: ICC management, mandatory POSH training for all employees, case handling and documentation','Employee Engagement: R&R programmes, culture initiatives, milestone events, eNPS tracking','Employee Benefits: group medical & life insurance administration, leave policy management'],
+  },
+  compliance: {
+    ey:'L2 CoE',name:'HO HR Compliance',role:'Labour law adherence and HR compliance at Head Office',
+    level:'l2',reports:'Head HR',
+    resp:['Maya leads HO HR Compliance','Labour law compliance: PF, ESIC, PT returns and audits','Statutory filing — annual and periodic compliance returns for Head Office entity','Compliance risk monitoring and leadership reporting','HRIS compliance data management and audit trail maintenance'],
+  },
+  analytics: {
+    ey:'L2 CoE',name:'HR Analytics & HRIS',role:'People data, workforce metrics, and management reporting',
+    level:'l2',reports:'Head HR',
+    resp:['Maya leads HR Analytics and HRIS','Monthly HR MIS — headcount, attrition, hiring funnel, SLA dashboards','Attrition analytics: trend analysis, department-level hotspots, exit insights','HRIS system administration and data quality governance','Headcount planning support and workforce data modelling'],
+  },
+  admin: {
+    ey:'L2–L3 Function',name:'Administration',role:'Office operations, facilities, and front office management across all Conscient locations',
+    level:'l2',reports:'Head HR',
+    resp:['Thomas heads the Administration function','Front Office team: Twinkle (Chattarpur), Tamanna (GVT Office), Barnali (Head Office)','Billu provides Admin Support across facilities','Facilities management, vendor coordination, office supply management','Front desk operations, visitor management, courier & communications at each site'],
+  },
+  it: {
+    ey:'L2 Function',name:'IT Support',role:'IT infrastructure, systems, and technology operations',
+    level:'l2',reports:'Head HR',
+    resp:['Sonu manages IT Support','Day-to-day IT infrastructure support and troubleshooting','System administration for HR tools and business platforms','Hardware and software provisioning for new joiners','Network, connectivity, and security support'],
+  },
+};
+
+function openPerson(key) {
+  const d = PEOPLE[key]; if(!d) return;
+  populate(d);
+}
+
+function openFn(key) {
+  const d = FN_DATA[key]; if(!d) return;
+  populate(d);
+}
+
+function ev(e, key) {
+  e.stopPropagation();
+  openPerson(key);
+}
+
+function populate(d) {
+  document.getElementById('m-ey').textContent = d.ey;
+  document.getElementById('m-name').textContent = d.name;
+  document.getElementById('m-role').textContent = d.role;
+
+  const lvMap = { l1:'lv-l1', l2:'lv-l2', l3:'lv-l3' };
+  const lvText = { l1:'Level 1 — Leadership', l2:'Level 2 — Function Lead', l3:'Level 3 — Specialist / Executive' };
+  document.getElementById('m-level').innerHTML = `<span class="level-badge ${lvMap[d.level]}">${lvText[d.level]}</span>`;
+
+  document.getElementById('m-reports').innerHTML = `<div class="reports-to"><span>Reports to:</span> ${d.reports}</div>`;
+  document.getElementById('m-resp').innerHTML = d.resp.map(r=>`<li>${r}</li>`).join('');
+  document.getElementById('overlay').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('overlay').classList.remove('open');
+}
+
+function closeIfBg(e) {
+  if(e.target === document.getElementById('overlay')) closeModal();
+}
+
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ── PASSWORD GATE ───────────────────────────────────────────────────
+   Password: Conscient@HR2025
+   Change the CORRECT_PW value below to update the password.
+   ──────────────────────────────────────────────────────────────────── */
+const CORRECT_PW = 'Conscient@HR2025';
+const SESSION_KEY = 'conscient_hr_auth';
+
+function checkPw() {
+  const input = document.getElementById('pw-input');
+  const errEl = document.getElementById('pw-error');
+  const val = input.value.trim();
+
+  if (val === CORRECT_PW) {
+    sessionStorage.setItem(SESSION_KEY, 'true');
+    const gate = document.getElementById('pw-gate');
+    gate.style.opacity = '0';
+    gate.style.transition = 'opacity .4s ease';
+    setTimeout(() => gate.style.display = 'none', 400);
+    errEl.textContent = '';
+  } else {
+    errEl.textContent = 'Incorrect password. Please try again.';
+    input.classList.add('error');
+    input.value = '';
+    input.focus();
+    setTimeout(() => input.classList.remove('error'), 400);
+  }
+}
+
+// On load — if already authenticated this session, skip gate
+(function() {
+  if (sessionStorage.getItem(SESSION_KEY) === 'true') {
+    const gate = document.getElementById('pw-gate');
+    if (gate) gate.style.display = 'none';
+  } else {
+    // Focus the input field automatically
+    window.addEventListener('DOMContentLoaded', () => {
+      const inp = document.getElementById('pw-input');
+      if (inp) inp.focus();
+    });
+  }
+})();
+</script>
+</body>
+</html>
